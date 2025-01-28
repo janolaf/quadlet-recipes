@@ -1,0 +1,25 @@
+[Unit]
+Description=Postgresql Container for Paperless-ngx
+
+[Container]
+Pod=paperless.pod
+ContainerName=paperless-db
+AutoUpdate=registry
+Timezone=local
+
+Image=docker.io/library/postgres:16
+
+Environment=POSTGRES_DB=paperless
+Environment=POSTGRES_USER=paperless
+Secret=paperless-db-password,type=env,target=POSTGRES_PASSWORD
+
+Volume=paperless-db.volume:/var/lib/postgresql/data:z
+
+HealthCmd='pg_isready -U paperless -d paperless'
+HealthStartPeriod=120s
+HealthInterval=30s
+HealthTimeout=30s
+HealthRetries=3
+
+[Install]
+WantedBy=default.target

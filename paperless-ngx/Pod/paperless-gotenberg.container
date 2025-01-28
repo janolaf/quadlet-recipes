@@ -1,0 +1,15 @@
+[Unit]
+Description=Gotenberg Container for Paperless-ngx
+
+[Container]
+Pod=paperless.pod
+ContainerName=paperless-gotenberg
+AutoUpdate=registry
+Image=docker.io/gotenberg/gotenberg:8
+Exec=gotenberg --chromium-disable-javascript=true --chromium-allow-list=file:///tmp/.*
+
+
+[Install]
+WantedBy=default.target
+
+

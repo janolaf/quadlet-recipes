@@ -1,0 +1,9 @@
+[Unit]
+Description=Paperless-ngx Pod
+
+[Pod]
+PodName=paperless
+PublishPort=10009:8000
+
+[Install]
+WantedBy=default.target

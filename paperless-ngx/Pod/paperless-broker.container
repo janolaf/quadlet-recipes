@@ -1,0 +1,19 @@
+[Unit]
+Description=Redis for Paperless-ngx
+
+[Container]
+ContainerName=paperless-broker
+Pod=paperless.pod
+AutoUpdate=registry
+Image=docker.io/library/redis:7
+
+Volume=paperless-broker-data.volume:/data:z
+
+HealthCmd='redis-cli ping || exit 1'
+HealthStartPeriod=120s
+HealthInterval=60s
+HealthTimeout=3s
+HealthRetries=3
+
+[Install]
+WantedBy=default.target

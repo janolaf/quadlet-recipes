@@ -1,0 +1,10 @@
+[Unit]
+Description=Tikia Container for Paperless-ngx
+
+[Container]
+Pod=paperless.pod
+ContainerName=paperless-tika
+AutoUpdate=registry
+Image=docker.io/apache/tika:latest
+[Install]
+WantedBy=default.target

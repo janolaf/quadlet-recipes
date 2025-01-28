@@ -1,0 +1,4 @@
+[Unit]
+Description=Media volume for Paperless-ngx
+
+[Volume]

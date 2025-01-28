@@ -1,0 +1,4 @@
+[Unit]
+Description=Export volume for Paperless-ngx
+
+[Volume]
