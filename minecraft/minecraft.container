@@ -8,7 +8,7 @@ Image=docker.io/itzg/minecraft-bedrock-server:latest
 AutoUpdate=registry
 ContainerName=Minecraft-bedrock-server
 
-Environment=SERVER_NAME="Bakker Survival"
+Environment=SERVER_NAME="Survival"
 Environment=ENABLE_LAN_VISIBILITY=true
 Environment=EULA=TRUE
 Environment=GAMEMODE=survival
