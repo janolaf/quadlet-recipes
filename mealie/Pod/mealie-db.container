@@ -1,27 +1,26 @@
 [Unit]
 Description=Mealie Postgres Database
-After=Network
+After=Network.target
 
 [Container]
 ContainerName=mealie-db
 Pod=mealie.pod
-Image=docker.io/library/postgres:17-alpine
+Image=docker.io/library/postgres:17
 AutoUpdate=registry
-
-Volume=/opt/mealie/db:/var/postgresql/data:z
-
 Timezone=local
+
+Volume=/opt/mealie/db:/var/lib/postgresql/data:Z
 
 Secret=mealie-db-password,type=env,target=POSTGRES_PASSWORD
 Environment=POSTGRES_USER=mealie
 Environment=PGUSER=mealie
+Environment=POSTGRES_DB=mealie
 
-HealthCmd='pg_isready -U mealie -d mealie'
-HealthStartPeriod=60s
+HealthCmd="pg_isready -U mealie -d mealie"
+HealthStartPeriod=45s
 HealthInterval=30s
 HealthTimeout=30s
 HealthRetries=3
 
 [Install]
-WantedBy=default.target
-
+WantedBy=default.target mealie-app.service
