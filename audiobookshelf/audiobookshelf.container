@@ -1,19 +1,29 @@
 # Audiobookshelf quadlet
+[Unit]
+Description=Audiobookshelf Container
 
 [Container]
 ContainerName=audiobookshelf
 Image=ghcr.io/advplyr/audiobookshelf:latest
 AutoUpdate=registry
+#NoNewPrivileges=true
 
 PublishPort=10003:80
 
-Volume=abs-config:/config:Z
-Volume=abs-metadata:/metadata:Z
-Volume=/srv/share/music/audiobooks:/audiobooks:z
+Volume=audiobookshelf.volume:/config:Z
+Volume=audiobookshelf.volume:/metadata:Z
+Mount=type=bind,source={CHANGE_ME}/audiobooks,destination=/audiobooks,relabel=shared
 
 Timezone=local
 
-UserNS=keep-id
+# UserNS=keep-id
+
+# Healthcheck
+HealthCmd="curl -f http://localhost/ping"
+HealthStartPeriod=30s
+HealthInterval=30s
+HealthTimeout=10s
+HealthRetries=3
 
 [Service]
 TimeoutStartSec=900
