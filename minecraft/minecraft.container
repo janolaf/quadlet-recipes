@@ -8,7 +8,7 @@ Image=docker.io/itzg/minecraft-bedrock-server:latest
 AutoUpdate=registry
 ContainerName=Minecraft-bedrock-server
 
-Environment=SERVER_NAME="Survival"
+Environment=SERVER_NAME="Local Survival Server"
 Environment=ENABLE_LAN_VISIBILITY=true
 Environment=EULA=TRUE
 Environment=GAMEMODE=survival
@@ -28,9 +28,11 @@ Timezone=local
 Exec=send-command gamerule pvp false
 Exec=send-command gamerule showcoordinates true
 
+HealthCmd=mc-monitor status-bedrock --host 127.0.0.1
 
 PublishPort=25565:25565
 PublishPort=19132:19132/udp
+PublishPort=19133:19133/udp
 
 Volume=/opt/minecraft/data:/data:z
 
