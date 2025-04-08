@@ -17,7 +17,7 @@ Timezone=local
 Environment=ALLOW_SIGNUP=true
 Environment=MAX_WORKERS=1
 Environment=WEB_CONCURRENCY=1
-Environment=BASE_URL=https://food.home.janolaf.ca
+Environment=BASE_URL=https://{{food.home.local}}
 
 # OIDC
 #Environment=OIDC_AUTH_ENABLED=true
